@@ -1,0 +1,8 @@
+UserName : Ayush
+Your Number was : 6
+Guesses : 2
+
+UserName : Rahul 
+Your Number was : 0
+Guesses : 2
+
