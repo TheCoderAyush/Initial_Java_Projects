@@ -11,63 +11,85 @@ import java.util.Scanner;
 public class Registration {
     Random rn = new Random();
     Scanner sc = new Scanner(System.in);
-   public String Username;
+    public String Username;
     String Phone_Number;
     String Password;
     String email;
     String Gender;
 
 
-
-  public  void userDetail(){
+    public void userDetail() throws Exception {
         System.out.println("Enter Your Name: ");
         sc.nextLine();
-        Username=sc.nextLine();
+        String name = sc.nextLine();
+
+        Scanner scv = new Scanner(new File("Initial_Java_Projects/src/Railway_Reservation_System/userDate.txt"));
+        while (scv.hasNextLine()) {
+            String line = scv.nextLine();
+            String[] userName = line.split(",");
+            if (userName[0].equalsIgnoreCase(name)) {
+//                    System.out.println("This UserName already Exits....");
+                throw new Exception("UserName already Exits...");
+            } else {
+                Username = name;
+            }
+        }
+
+
         System.out.println("Enter Your Gender : ");
-        Gender=sc.nextLine();
-        if(Username.matches("[a-zA-Z ]+")&&(Gender.matches("[a-zA-Z ]+"))){
+        Gender = sc.nextLine();
+        if (Username.matches("[a-zA-Z ]+") && (Gender.matches("[a-zA-Z ]+"))) {
 //            System.out.println("Username : "+Username);
 //            System.out.println("Gender : "+Gender);
-        }else{
+        } else {
             System.out.println("Invalid Detail");
 
         }
 
     }
-    void phoneNumber(){
+
+    void phoneNumber() {
         System.out.println("Enter Your Phone Number : ");
-        Phone_Number=sc.nextLine();
+        Phone_Number = sc.nextLine();
 //        System.out.println("Number : "+Phone_Number);
     }
-    void userEmail(){
+
+    void userEmail() {
         System.out.println("Enter Your Email Id : ");
-        String  Email=sc.nextLine();
-        if (Email.endsWith("@gmail.com")){
-          email=  Email.toLowerCase();
+        String Email = sc.nextLine();
+        if (Email.endsWith("@gmail.com")) {
+            email = Email.toLowerCase();
 //            System.out.println(email);
-        }else{
+        } else {
             System.out.println("Invalid Email");
         }
 
     }
 
-    void createPassword(){
-        userDetail();
-        phoneNumber();
-        userEmail();
-        System.out.println("Create Your Password : ");
-        Password=sc.nextLine();
-        System.out.println("Confirm Password : ");
-        String confirmPass=sc.nextLine();
-        if(confirmPass.equals(Password)){
-//            System.out.println("Password Created Successfully..");
-            System.out.println("Registration Done Successfully...");
-            UsersData();
+    void createPassword() {
+        try {
+            userDetail();
 
-        }else{
-            System.out.println("Password not matches..");
+
+            phoneNumber();
+            userEmail();
+            System.out.println("Create Your Password : ");
+            Password = sc.nextLine();
+            System.out.println("Confirm Password : ");
+            String confirmPass = sc.nextLine();
+            if (confirmPass.equals(Password)) {
+//            System.out.println("Password Created Successfully..");
+                System.out.println("Registration Done Successfully...");
+                UsersData();
+
+            } else {
+                System.out.println("Password not matches..");
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
     }
+
 
     void UsersData(){
         File userFile = new File("Initial_Java_Projects/src/Railway_Reservation_System/userDate.txt");
