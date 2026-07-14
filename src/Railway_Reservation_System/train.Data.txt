@@ -1,0 +1,10 @@
+Rajdhani Express,Prayagraj,Ranchi Junction,18310
+Gorakhpur Express,Delhi,Varansi Junction,18789
+Swarna Express,Banaras,Prayagraj Junction,18908
+Jhatu Express,Prayagraj,Ranchi Junction,18785
+kamini Express,Bokaro Steel,Jaitpur Junction,19076
+Memu Express,Ramnathpur, Rambhag,18890
+Deccan Bullet Express,Mumbai,Pune Junction,12105
+Desert Horizon Express,Howrah Junction,Chennai Central,12842
+Malabar Night Rider,Mangaluru Central,Jharkhand,16630
+Ganga Yamuna,Haridwar,Prayagraj,13010
