@@ -1,0 +1,7 @@
+raju,raju45,raju123@gmail.com,Male,67
+Ayush,ayush87676,ayush123@gmail.com,Male,23
+raju pandit,pandit45,rajupandit345@gmail.com,male,89
+ayush mishra,ayush1234,ayushmishra345@gmail.com,male,789
+ayush   mishra,ayushhhhhh89,ayush897@gmail.com,male,90
+raj    yadav,raj89,raj@gmail.com,male,89
+mahimasingh,mahima798,mahima@gmail.com,female,89
