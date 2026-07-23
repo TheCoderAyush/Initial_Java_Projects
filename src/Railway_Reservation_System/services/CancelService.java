@@ -1,28 +1,26 @@
 package Railway_Reservation_System.services;
 
 import Railway_Reservation_System.inputValidationUtil.InvalidInput;
-import Railway_Reservation_System.model.Passenger;
 import Railway_Reservation_System.util.FileUtil;
 import Railway_Reservation_System.util.Input;
-import org.w3c.dom.css.CSSStyleDeclaration;
-
-import java.io.File;
+import java.util.InputMismatchException;
 
 public class CancelService {
     public static void cancelTicket(){
-        System.out.println("Enter Your Pnr N0. : ");
-        long pnr = Input.sc.nextLong();
-
-        if(InvalidInput.isUniquePnr(pnr)){
-
-        }else {
-            System.out.println("Not got");
+        try{
+            System.out.println("Enter Your Pnr N0. : ");
+            long pnr = Input.sc.nextLong();
+            if(InvalidInput.isUniquePnr(pnr)){
+                if (FileUtil.readBookingByLines(pnr)){
+                    System.out.println("Ticket Cancelled Successfully........");
+                }
+            }else {
+                System.out.printf("Passenger with PNR (%d) not Found....",pnr);
+            }
+        }catch (InputMismatchException e){
+            System.out.println("Input Mismatch ");
         }
 
-    }
 
-
-    public static void main(String[] args) {
-        cancelTicket();
     }
 }
