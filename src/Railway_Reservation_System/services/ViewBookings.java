@@ -33,7 +33,5 @@ public class ViewBookings {
         }
     }
 
-    public static void main(String[] args) {
-       viewAllBooking();
-    }
+
 }
