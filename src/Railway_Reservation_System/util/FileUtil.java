@@ -38,8 +38,8 @@ public class FileUtil {
     public static ArrayList<User> getAllUser() {
         ArrayList<User> users = new ArrayList<>();
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(myFile));
+        try (BufferedReader br = new BufferedReader(new FileReader(myFile));){
+
             String line;
             while ((line = br.readLine()) != null) {
                 String[] data = line.split(",");
@@ -77,8 +77,8 @@ public class FileUtil {
     public static ArrayList<Passenger> getBookedPassenger(){
         ArrayList<Passenger> pass = new ArrayList<>();
 
-        try{
-            BufferedReader br = new BufferedReader( new FileReader(myfile2));
+        try( BufferedReader br = new BufferedReader( new FileReader(myfile2))){
+
             String line;
             while ((line= br.readLine())!=null){
                 String [] data = line.split(",");
@@ -99,8 +99,8 @@ public class FileUtil {
     public static ArrayList<Train> getBookedTrain(){
 
         ArrayList<Train> train = new ArrayList<>();
-        try{
-            BufferedReader br = new BufferedReader( new FileReader(myfile2));
+        try(BufferedReader br = new BufferedReader( new FileReader(myfile2))){
+
             String line;
             while ((line= br.readLine())!=null){
                 String [] data = line.split(",");
@@ -116,6 +116,43 @@ public class FileUtil {
             System.out.println(e);
         }
         return train;
+    }
+    public static boolean readBookingByLines(long pnr){
+        File duplicateFile = new File("Initial_Java_Projects/src/Railway_Reservation_System/data/duplicateFile.txt");
+        try(Scanner scv = new Scanner(myfile2)){
+
+            FileWriter fw = new FileWriter(duplicateFile);
+            boolean cancel=false;
+
+            while(scv.hasNextLine()){
+                String line= scv.nextLine();
+                String[] data=line.split(",");
+                if (data[3].equals(String.valueOf(pnr))){
+                    continue;
+                }else {
+                    fw.write(line+"\n");
+                }
+
+            }
+
+            fw.close();
+        }catch (IOException e){
+            System.out.println(e);
+        }
+            if (myfile2.delete()){
+                if (duplicateFile.renameTo(myfile2)){
+                    System.out.println("Booking deleted Successfully...");
+                    return true;
+                }else {
+                    System.out.println("Failed to Rename");
+                }
+            }else {
+                System.out.println("Failed to Delete OG file");
+            }
+
+
+        return false;
+
     }
 
 

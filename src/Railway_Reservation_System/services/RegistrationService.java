@@ -35,8 +35,6 @@ public class RegistrationService {
              if (!InvalidInput.isValidAge(age)) {
                   throw new InvalidAge("Invalid Age");
              }
-
-
              System.out.println("Enter Your Sex : ");
 
              String sex = Input.sc.next();

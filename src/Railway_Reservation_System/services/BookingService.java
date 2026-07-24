@@ -37,7 +37,6 @@ public class BookingService {
                 throw new InvalidSex("It should male or female");
             }
 
-
                 Train t = TrainServices.searchTrain();
                 if(t.getTrainNo()==0){
                     Passenger pass = new Passenger(Name,sex,age,(PnrGeneration.pnr()));
@@ -53,17 +52,8 @@ public class BookingService {
                 }else {
                     throw new InputMismatchException();
                 }
-
-
-
-
-
         }catch (Exception e){
             System.out.println(e);
         }
-    }
-
-    public static void main(String[] args) {
-            bookTicket();
     }
 }

@@ -1,7 +1,6 @@
 package Railway_Reservation_System.inputValidationUtil;
 import Railway_Reservation_System.model.Passenger;
 import Railway_Reservation_System.model.Train;
-import Railway_Reservation_System.services.TrainServices;
 import Railway_Reservation_System.util.FileUtil;
 import Railway_Reservation_System.model.User;
 
@@ -64,12 +63,20 @@ public class InvalidInput {
 
         return false;
     }
-
-    public static void main(String[] args) {
-
+    public static boolean isTrainSourceCorrect(String source){
+        for (Train sources : FileUtil.getBookedTrain() ){
+            if (source.equalsIgnoreCase(sources.getSource())){
+                return true;
+            }
+        }
+        return false;
     }
-
-
-
-
+    public static boolean isTrainDestinationCorrect(String des){
+        for (Train sources : FileUtil.getBookedTrain() ){
+            if (des.equalsIgnoreCase(sources.getDestination())){
+                return true;
+            }
+        }
+        return false;
+    }
 }

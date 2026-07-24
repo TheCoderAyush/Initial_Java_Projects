@@ -1,7 +1,5 @@
 package Railway_Reservation_System.util;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.Random;
 
 public class PnrGeneration {
