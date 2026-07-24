@@ -1,14 +1,9 @@
 package Railway_Reservation_System.services;
 import Railway_Reservation_System.inputValidationUtil.InvalidInput;
 import Railway_Reservation_System.model.Train;
-import Railway_Reservation_System.util.FileUtil;
 import Railway_Reservation_System.util.Input;
 import Railway_Reservation_System.util.TrainFile;
-import Railway_Reservation_System.util.PnrGeneration;
-
-
 import java.util.ArrayList;
-import java.util.InvalidPropertiesFormatException;
 
 public class TrainServices {
     public static void trainData(){
@@ -38,49 +33,35 @@ public class TrainServices {
     }
     public static Train searchTrain() {
         ArrayList<String> trianName = new ArrayList<>();
-
-
-            System.out.println("Enter Source : ");
-            String source = Input.sc.nextLine();
-            if (InvalidInput.isTrainSourceCorrect(source)) {
-                try {
-                    throw new Exception("Source Not Available...");
-                }catch (Exception e){
-                    System.out.println(e);
+            try {
+                System.out.println("Enter Source : ");
+                String source = Input.sc.nextLine();
+                if (!InvalidInput.isTrainSourceCorrect(source)) {
+                    throw new Exception("Source Not Available....");
                 }
-
-            }
-            System.out.println("Enter Destination : ");
-            String des = Input.sc.nextLine();
-            if (InvalidInput.isTrainDestinationCorrect(des)){
-                try {
-                    throw new Exception("Destination Not Available.....");
-                }catch (Exception e){
-                    System.out.println(e);
+                System.out.println("Enter Destination : ");
+                String des = Input.sc.nextLine();
+                if (!InvalidInput.isTrainDestinationCorrect(des)) {
+                    throw new Exception(" Destination Not Available....");
                 }
-            }
-            for (Train search : TrainFile.readTrainRecord()) {
-                if (source.equalsIgnoreCase(search.getSource()) && (des.equalsIgnoreCase(search.getDestination()))) {
-                    trianName.add(search.getTrainName());
-
+                for (Train search : TrainFile.readTrainRecord()) {
+                    if (source.equalsIgnoreCase(search.getSource()) && (des.equalsIgnoreCase(search.getDestination()))) {
+                        trianName.add(search.getTrainName());
+                    }
                 }
-            }
-            System.out.println("Available Trains are : " + trianName);
-            System.out.println("Enter train name to Select : ");
-            String tname = Input.sc.nextLine();
-            for (String name : trianName) {
-                if (tname.equalsIgnoreCase(name)) {
-                    Train t = new Train(source, des, 0, tname);
-                    return t;
+                System.out.println("Available Trains are : " + trianName);
+                System.out.println("Enter train name to Select : ");
+                String tname = Input.sc.nextLine();
+                for (String name : trianName) {
+                    if (tname.equalsIgnoreCase(name)) {
+                        Train t = new Train(source, des, 0, tname);
+                        return t;
+                    }
                 }
+            }catch (Exception e ){
+                System.out.println(e);
             }
-            Train t2 = new Train(source, des, 1, tname);
-            return t2;
-
-
+        Train t2 = new Train("source", "des", 1, "tname");
+        return t2;
     }
-
-
-
-
 }

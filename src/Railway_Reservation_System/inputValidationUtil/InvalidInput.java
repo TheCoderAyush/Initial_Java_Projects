@@ -6,7 +6,7 @@ import Railway_Reservation_System.model.User;
 
 public class InvalidInput {
     public static boolean isValidName(String name){
-        return name.matches("[a-z A-Z]+");
+        return name.matches("[a-zA-Z ]+");
     }
     public static boolean isValidAge(int age){
         if ((age<0)||(age>120)){
@@ -63,7 +63,7 @@ public class InvalidInput {
 
         return false;
     }
-    public static boolean isTrainSourceCorrect(String source){
+    public static boolean isTrainSourceCorrect(String source) throws Exception{
         for (Train sources : FileUtil.getBookedTrain() ){
             if (source.equalsIgnoreCase(sources.getSource())){
                 return true;

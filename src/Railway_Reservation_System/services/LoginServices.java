@@ -2,6 +2,7 @@ package Railway_Reservation_System.services;
 import Railway_Reservation_System.exceptions.InvalidName;
 import  Railway_Reservation_System.util.Input;
 import Railway_Reservation_System.inputValidationUtil.InvalidInput;
+import Railway_Reservation_System.util.Menu;
 
 public class LoginServices {
     public static void login(){
@@ -22,6 +23,8 @@ public class LoginServices {
             String password=Input.sc.nextLine();
             if (InvalidInput.isCorrectPassword(password)){
                 System.out.println("Logging Successfully....");
+                System.out.println();
+                Menu.afterLogin();
             }else{
                 System.out.println("Incorrect Password");
             }

@@ -5,3 +5,5 @@ ayush mishra,ayush1234,ayushmishra345@gmail.com,male,789
 ayush   mishra,ayushhhhhh89,ayush897@gmail.com,male,90
 raj    yadav,raj89,raj@gmail.com,male,89
 mahimasingh,mahima798,mahima@gmail.com,female,89
+rathore,rathore123,rathore@gmail.com,male,78
+rahul pandit,rahul123,rahul@gmail.com,male,23

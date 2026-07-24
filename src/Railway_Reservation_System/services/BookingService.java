@@ -4,20 +4,16 @@ import Railway_Reservation_System.util.FileUtil;
 import Railway_Reservation_System.util.Input;
 import Railway_Reservation_System.util.PnrGeneration;
 import Railway_Reservation_System.exceptions.InvalidAge;
-
 import Railway_Reservation_System.exceptions.InvalidName;
 import Railway_Reservation_System.exceptions.InvalidSex;
 import Railway_Reservation_System.model.Passenger;
 import Railway_Reservation_System.model.Train;
-import Railway_Reservation_System.util.TrainFile;
 
 import java.util.InputMismatchException;
 
 public class BookingService {
     public static void bookTicket() {
         try {
-
-
             System.out.println("Enter Your Name : ");
             String name = Input.sc.nextLine();
             String Name =name.replaceAll("\\s+","");
@@ -36,7 +32,6 @@ public class BookingService {
             if (!InvalidInput.isValidSex(sex)){
                 throw new InvalidSex("It should male or female");
             }
-
                 Train t = TrainServices.searchTrain();
                 if(t.getTrainNo()==0){
                     Passenger pass = new Passenger(Name,sex,age,(PnrGeneration.pnr()));

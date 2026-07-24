@@ -117,12 +117,12 @@ public class FileUtil {
         }
         return train;
     }
-    public static boolean readBookingByLines(long pnr){
+    public static boolean changingFile(long pnr){
         File duplicateFile = new File("Initial_Java_Projects/src/Railway_Reservation_System/data/duplicateFile.txt");
         try(Scanner scv = new Scanner(myfile2)){
 
             FileWriter fw = new FileWriter(duplicateFile);
-            boolean cancel=false;
+
 
             while(scv.hasNextLine()){
                 String line= scv.nextLine();
@@ -141,7 +141,7 @@ public class FileUtil {
         }
             if (myfile2.delete()){
                 if (duplicateFile.renameTo(myfile2)){
-                    System.out.println("Booking deleted Successfully...");
+//                    System.out.println("Booking deleted Successfully...");
                     return true;
                 }else {
                     System.out.println("Failed to Rename");
@@ -154,6 +154,7 @@ public class FileUtil {
         return false;
 
     }
+
 
 
 

@@ -11,7 +11,7 @@ public class CancelService {
             System.out.println("Enter Your Pnr N0. : ");
             long pnr = Input.sc.nextLong();
             if(InvalidInput.isUniquePnr(pnr)){
-                if (FileUtil.readBookingByLines(pnr)){
+                if (FileUtil.changingFile(pnr)){
                     System.out.println("Ticket Cancelled Successfully........");
                 }
             }else {
@@ -20,7 +20,5 @@ public class CancelService {
         }catch (InputMismatchException e){
             System.out.println("Input Mismatch ");
         }
-
-
     }
 }

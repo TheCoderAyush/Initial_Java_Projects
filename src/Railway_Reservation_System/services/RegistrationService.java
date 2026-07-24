@@ -19,16 +19,17 @@ public class RegistrationService {
              String Name;
              String name = Input.sc.nextLine();
 
-             if (!InvalidInput.isValidName(name)) {
-                  throw new InvalidName("Invalid Name .....");
+             if (InvalidInput.isValidName(name)) {
+                  if (InvalidInput.isSameName(name.trim())){
+                       throw new InvalidName("UserName already exits");
+                  }else {
+                       Name=name.replaceAll("\\s+"," ");
+                  }
+
              }else{
-                  Name = name.replaceAll("\\s+","");
+                throw new InvalidName("Invalid Name.......");
              }
-             if (InvalidInput.isSameName(name.trim())){
-                  throw new InvalidName("UserName already exits");
-             }else {
-                  Name=name.replaceAll("\\s+","");
-             }
+
              System.out.println("Enter Your Age : ");
              int age;
              age = Input.sc.nextInt();
